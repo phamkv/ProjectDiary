@@ -1,4 +1,4 @@
-package de.phamkv.projectdiary.domain;
+package de.phamkv.projectdiary.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -24,7 +24,7 @@ public class Post {
     private String content;
     @ManyToOne
     @JoinColumn(name = "profile_id", nullable = false)
-    @JsonIgnoreProperties("posts")
+    @JsonIgnoreProperties({"posts", "password"})
     private Profile profile;
 
     public Post(String title, String content, Profile profile) {

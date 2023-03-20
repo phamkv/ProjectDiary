@@ -1,7 +1,7 @@
 package de.phamkv.projectdiary.controller;
 
-import de.phamkv.projectdiary.domain.Post;
-import de.phamkv.projectdiary.domain.Profile;
+import de.phamkv.projectdiary.model.Post;
+import de.phamkv.projectdiary.model.Profile;
 import de.phamkv.projectdiary.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

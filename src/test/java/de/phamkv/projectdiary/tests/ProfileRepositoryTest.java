@@ -1,10 +1,9 @@
 package de.phamkv.projectdiary.tests;
 
-import de.phamkv.projectdiary.domain.Post;
-import de.phamkv.projectdiary.domain.Profile;
+import de.phamkv.projectdiary.model.Post;
+import de.phamkv.projectdiary.model.Profile;
 import de.phamkv.projectdiary.repository.PostRepository;
 import de.phamkv.projectdiary.repository.ProfileRepository;
-import org.hibernate.collection.spi.PersistentBag;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -91,7 +90,7 @@ public class ProfileRepositoryTest {
     @Test
     public void testFindByUsername() {
         // find the profile by its username
-        Profile foundProfile = profileRepository.findByUsername("testuser");
+        Profile foundProfile = profileRepository.findByUsername("testuser").orElse(null);
 
         // assert that the profile was found and has the correct properties
         Assertions.assertNotNull(foundProfile);

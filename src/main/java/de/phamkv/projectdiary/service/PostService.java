@@ -1,7 +1,7 @@
 package de.phamkv.projectdiary.service;
 
-import de.phamkv.projectdiary.domain.Post;
-import de.phamkv.projectdiary.domain.Profile;
+import de.phamkv.projectdiary.model.Post;
+import de.phamkv.projectdiary.model.Profile;
 import de.phamkv.projectdiary.repository.PostRepository;
 import de.phamkv.projectdiary.repository.ProfileRepository;
 import org.springframework.stereotype.Service;
@@ -33,7 +33,7 @@ public class PostService {
     }
 
     public List<Post> getPostsByUsername(String username) {
-        Profile profile = profileRepository.findByUsername(username);
+        Profile profile = profileRepository.findByUsername(username).orElse(null);
         return getPostsByProfile(profile);
     }
 

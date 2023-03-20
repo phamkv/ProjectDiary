@@ -1,6 +1,6 @@
 package de.phamkv.projectdiary.service;
 
-import de.phamkv.projectdiary.domain.Profile;
+import de.phamkv.projectdiary.model.Profile;
 import de.phamkv.projectdiary.repository.ProfileRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,10 +24,11 @@ public class ProfileService {
     }
 
     public Profile getProfileByUsername(String username) {
-        return profileRepository.findByUsername(username);
+        return profileRepository.findByUsername(username).orElse(null);
     }
 
     public Profile addProfile(Profile profile) {
+        profile.getRoles().add("ROLE_USER");
         return profileRepository.save(profile);
     }
 
