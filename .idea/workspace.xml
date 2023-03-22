@@ -5,29 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b94beb4d-5397-4789-8352-333adcab604d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/node/node" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/node/npm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/node/npm.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/node/npx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/node/npx.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/target/frontend-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/target/maven-archiver/pom.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/de/phamkv/projectdiary/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/de/phamkv/projectdiary/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/de/phamkv/projectdiary/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/de/phamkv/projectdiary/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/de/phamkv/projectdiary/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/de/phamkv/projectdiary/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/de/phamkv/projectdiary/ProjectDiaryApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/de/phamkv/projectdiary/ProjectDiaryApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/de/phamkv/projectdiary/tests/ProfileRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
