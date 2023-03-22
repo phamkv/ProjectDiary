@@ -60,8 +60,9 @@ public class WebSecurityConfig {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().requestMatchers("/auth/**").permitAll()
-                .requestMatchers("/test/**").permitAll()
+                .authorizeRequests()
+                .requestMatchers("/api/**").authenticated()
+                .requestMatchers("/**").permitAll()
                 .anyRequest().authenticated();
 
         http.authenticationProvider(authenticationProvider());
@@ -70,4 +71,10 @@ public class WebSecurityConfig {
 
         return http.build();
     }
+
+/*    requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/test/**").permitAll()
+                .requestMatchers("/index.html").permitAll()
+                .requestMatchers("/assets/**").permitAll()
+                .requestMatchers("").permitAll()*/
 }

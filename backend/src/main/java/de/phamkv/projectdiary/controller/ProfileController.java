@@ -10,7 +10,7 @@ import de.phamkv.projectdiary.service.ProfileService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/profiles")
+@RequestMapping("/api/profiles")
 public class ProfileController {
 
     private final ProfileService profileService;
