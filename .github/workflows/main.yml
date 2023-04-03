@@ -82,13 +82,14 @@ jobs:
         run: echo ${{ steps.docker_build.outputs.digest }}
 
   deploy:
+      needs: build-and-push
       name: Deploy app to fly.io
       # Run on Ubuntu using the latest version
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v3
         - uses: superfly/flyctl-actions/setup-flyctl@master
-        - run: flyctl deploy --remote-only
+        - run: flyctl deploy --image ghcr.io/phamkv/projectdiary:latest
           # Use secret from repository
           env:
             FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
