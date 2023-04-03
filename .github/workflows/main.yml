@@ -29,6 +29,14 @@ jobs:
       #Build the application using Maven
       - name: Build with Maven
         run: mvn -B package -DskipTests --file pom.xml
+      - name: Upload JAR
+        #This uploads artifacts from your workflow allowing you to share data between jobs and store data once a workflow is complete.
+        uses: actions/upload-artifact@v2
+        with:
+          #Set artifact name
+          name: my-app
+          #From this path
+          path: backend/target/*.jar
 
   build-and-push:
     needs: build
@@ -37,6 +45,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Download JAR artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: my-app
+          #Specify where to store artifact locally
+          path: backend/target/
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
