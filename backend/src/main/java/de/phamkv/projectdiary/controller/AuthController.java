@@ -25,6 +25,11 @@ public class AuthController {
     private final ProfileRepository profileRepository;
     private final JwtUtils jwtTokenProvider;
 
+    @GetMapping("/ping")
+    public ResponseEntity<String> sendPong() {
+        return ResponseEntity.ok("Pong");
+    }
+
     @PostMapping("/signup")
     public ResponseEntity<?> signUp(@RequestBody Profile profile) {
         if (profileRepository.findByUsername(profile.getUsername()).isPresent()) {
