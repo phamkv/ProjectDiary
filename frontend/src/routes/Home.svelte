@@ -5,6 +5,7 @@
   import PingButton from '../lib/PingButton.svelte';
   import { onMount } from 'svelte';
   import { loggedIn } from '../stores';
+  import Diary from '../lib/Diary.svelte';
 
   let authenticated;
   let username;
@@ -29,10 +30,10 @@
       <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
     </a>
   </div>
-  <h1>Vite + Svelte</h1>
 
   {#if username}
-    <p>Hello {username}</p>
+    <p>Hello {username}! Today is:</p>
+    <Diary />
   {:else}
     <p>Please log in to use the service</p>
   {/if}
