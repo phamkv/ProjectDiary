@@ -2,17 +2,32 @@
   import { Router, Route, Link } from 'svelte-routing';
   import Signin from './routes/Signin.svelte';
   import Home from './routes/Home.svelte';
+  import Signup from './routes/Signup.svelte';
+  import Signout from './routes/Signout.svelte';
+  import { loggedIn } from './stores';
+
+  let authenticated;
+
+  loggedIn.subscribe(value => {
+		authenticated = value;
+	});
 </script>
 
 <main>
   <Router>
     <nav>
-     <Link to="/">Home</Link>
-     <Link to="/signin">Signin</Link>
+      <Link to="/">Home</Link>
+      {#if authenticated}
+        <Link to="/signout">Sign Out</Link>
+      {:else}
+        <Link to="/signin">Sign In</Link>
+      {/if}
     </nav>
     <div>
-     <Route path="/"><Home /></Route>
-     <Route path="/signin"><Signin /></Route>
+      <Route path="/"><Home /></Route>
+      <Route path="/signin"><Signin /></Route>
+      <Route path="/signup"><Signup /></Route>
+      <Route path="/signout"><Signout /></Route>
     </div>
   </Router>
 

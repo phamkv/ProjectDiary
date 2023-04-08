@@ -3,7 +3,21 @@
   import viteLogo from '/vite.svg'
   import Counter from '../lib/Counter.svelte'
   import PingButton from '../lib/PingButton.svelte';
-  import NavigateButton from '../lib/NavigateButton.svelte';
+  import { onMount } from 'svelte';
+  import { loggedIn } from '../stores';
+
+  let authenticated;
+  let username;
+
+  loggedIn.subscribe(value => {
+    authenticated = value;
+  });
+
+  onMount(async () => {
+		if (authenticated) {
+      username = localStorage.getItem("username");
+    }
+	});
 </script>
 
 <main>
@@ -17,9 +31,11 @@
   </div>
   <h1>Vite + Svelte</h1>
 
-  <div>
-    <NavigateButton label="Sign In" goto="/signin" />
-  </div>
+  {#if username}
+    <p>Hello {username}</p>
+  {:else}
+    <p>Please log in to use the service</p>
+  {/if}
 
   <div class="card">
     <Counter />
