@@ -33,7 +33,7 @@
   <div class="post-content">
     <p>{content}</p>
   </div>
-  <h4>{date}</h4> <!--TODO: Change to display only the year-->
+  <h4>{date}</h4>
 </div>
 
 <style>

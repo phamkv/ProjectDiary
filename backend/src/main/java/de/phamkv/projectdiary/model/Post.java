@@ -24,7 +24,7 @@ public class Post {
     private String content;
     @ManyToOne
     @JoinColumn(name = "profile_id", nullable = false)
-    @JsonIgnoreProperties({"posts", "password"})
+    @JsonIgnoreProperties({"posts", "password", "roles"})
     private Profile profile;
 
     public Post(String title, String content, Profile profile) {
