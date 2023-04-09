@@ -1,11 +1,44 @@
-<script>
+<script lang="ts">
+  import { onMount } from "svelte";
+  import NewPostForm from "./NewPostForm.svelte";
+  import Post from "./Post.svelte";
+
   let date = new Date();
   let day = date.getDate();
   let year = date.getFullYear();
   let weekday = date.toLocaleString(navigator.language, { weekday: 'long' });
   let monthString = date.toLocaleString(navigator.language, { month: 'long' });
 
-  let posts;
+  let posts = [];
+
+  onMount(async () => {
+    const token = localStorage.getItem('token');
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+
+    try {
+      const response = await fetch(`/api/posts?day=${day}&month=${month}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        posts = await response.json();
+      } else {
+        console.error('Error fetching posts.');
+        posts = [{ id: 0, title: "Hello World!", content: "Have a nice day!", date: "2023-04-03"}];
+        console.log(posts);
+      }
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    }
+  });
+
+  function deletePost(id: Number) {
+    posts = posts.filter(post => post.id !== id);
+  }
 </script>
 
 <div class="date">
@@ -14,10 +47,20 @@
   <div class="dateText">{monthString} {year}</div>
 </div>
 
+<NewPostForm />
+
 <p>You posted this on {day} {monthString}:</p>
 
-{#if posts}
-{posts}
+{#if posts.length > 0}
+  {#each posts as post}
+    <Post
+      title={post.title}
+      content={post.content}
+      id={post.id}
+      date={post.date}
+      deletePost={() => deletePost(post.id)}
+    />
+  {/each}
 {:else}
 None (Feel free to add something to your Diary)
 {/if}
@@ -32,6 +75,7 @@ None (Feel free to add something to your Diary)
     border: 2px solid white;
     padding: 1rem;
     border-radius: 10px;
+    margin-bottom: 1rem;
   }
 
   .day {
