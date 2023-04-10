@@ -1,9 +1,11 @@
 <script>
   import { navigate } from 'svelte-routing';
+  import { postsStore } from '../stores';
   
   let title = '';
   let content = '';
   let errorMessage = '';
+  let successMessage = '';
   
   function handleSubmit(event) {
     event.preventDefault();
@@ -28,13 +30,20 @@
       },
       body: JSON.stringify({ title, content, day, month, year }),
     })
-      .then(response => {
+      .then(async response => {
         if (!response.ok) {
           console.error('Error creating new post.');
           errorMessage = 'Error creating new post.';
         } else {
+          title = '';
+          content = '';
           errorMessage = '';
-          navigate('/');
+          const post = await response.json();
+          postsStore.update(value => [...value, post]);
+          successMessage = 'Post created successfully!';
+          setTimeout(() => {
+            successMessage = '';
+          }, 5000);
         }
       })
       .catch(error => {
@@ -97,6 +106,10 @@
   
   {#if errorMessage}
     <p>{errorMessage}</p>
+  {/if}
+
+  {#if successMessage}
+    <p style="color: green;">{successMessage}</p>
   {/if}
   
   <form on:submit={handleSubmit}>

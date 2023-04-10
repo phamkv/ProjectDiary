@@ -1,9 +1,10 @@
 <script lang="ts">
+  import { postsStore } from '../stores';
+
   export let id: Number;
   export let title: String;
   export let content: String;
   export let date;
-  export let deletePost; String;
 
   function getMonthName(monthNumber) {
     const date = new Date();
@@ -27,7 +28,7 @@
         return;
       }
 
-      deletePost();
+      postsStore.update(value => value.filter(post => post.id !== id));
     }
   }
 </script>

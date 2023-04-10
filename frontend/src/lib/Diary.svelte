@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import NewPostForm from "./NewPostForm.svelte";
   import Post from "./Post.svelte";
+  import { postsStore } from '../stores';
 
   let date = new Date();
   let day = date.getDate();
@@ -10,6 +11,10 @@
   let monthString = date.toLocaleString(navigator.language, { month: 'long' });
 
   let posts = [];
+
+  const unsubscribe = postsStore.subscribe(value => {
+    posts = value;
+  });
 
   onMount(async () => {
     const token = localStorage.getItem('token');
@@ -26,20 +31,14 @@
 
       if (response.ok) {
         const results = await response.json();
-        posts = results.filter(post => post.month == month);
+        postsStore.update(value => results.filter(post => post.month == month));
       } else {
         console.error('Error fetching posts.');
-        posts = [{ id: 0, title: "Hello World!", content: "Have a nice day!", date: "2023-04-03"}];
-        console.log(posts);
       }
     } catch (error) {
       console.error('Error fetching posts:', error);
     }
   });
-
-  function deletePost(id: Number) {
-    posts = posts.filter(post => post.id !== id);
-  }
 </script>
 
 <div class="date">
@@ -59,7 +58,6 @@
       content={post.content}
       id={post.id}
       date={{"day": post.day, "month": post.month, "year": post.year}}
-      deletePost={() => deletePost(post.id)}
     />
   {/each}
 {:else}
