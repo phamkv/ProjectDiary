@@ -18,14 +18,15 @@
     const month = date.getMonth() + 1;
 
     try {
-      const response = await fetch(`/api/posts?day=${day}&month=${month}`, {
+      const response = await fetch(`/api/posts/day?day=${day}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
 
       if (response.ok) {
-        posts = await response.json();
+        const results = await response.json();
+        posts = results.filter(post => post.month == month);
       } else {
         console.error('Error fetching posts.');
         posts = [{ id: 0, title: "Hello World!", content: "Have a nice day!", date: "2023-04-03"}];
@@ -57,7 +58,7 @@
       title={post.title}
       content={post.content}
       id={post.id}
-      date={post.date}
+      date={{"day": post.day, "month": post.month, "year": post.year}}
       deletePost={() => deletePost(post.id)}
     />
   {/each}

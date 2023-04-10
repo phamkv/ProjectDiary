@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findByProfile(Profile user);
+    List<Post> findByDayAndProfile(Integer day, Profile profile);
 }
 
 

@@ -22,6 +22,12 @@ public class Post {
     private String title;
     @Column(name = "content")
     private String content;
+    @Column(name = "day")
+    private Integer day;
+    @Column(name = "month")
+    private Integer month;
+    @Column(name = "year")
+    private Integer year;
     @ManyToOne
     @JoinColumn(name = "profile_id", nullable = false)
     @JsonIgnoreProperties({"posts", "password", "roles"})

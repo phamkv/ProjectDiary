@@ -6,6 +6,7 @@ import de.phamkv.projectdiary.repository.PostRepository;
 import de.phamkv.projectdiary.repository.ProfileRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -35,6 +36,10 @@ public class PostService {
     public List<Post> getPostsByUsername(String username) {
         Profile profile = profileRepository.findByUsername(username).orElse(null);
         return getPostsByProfile(profile);
+    }
+
+    public List<Post> getPostsByDayAndProfile(Integer day, Profile profile) {
+        return postRepository.findByDayAndProfile(day, profile);
     }
 
     public Post addPost(Post post) {

@@ -7,6 +7,11 @@
   
   function handleSubmit(event) {
     event.preventDefault();
+
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
     
     const token = localStorage.getItem('token');
     if (!token) {
@@ -21,7 +26,7 @@
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
-      body: JSON.stringify({ title, content }),
+      body: JSON.stringify({ title, content, day, month, year }),
     })
       .then(response => {
         if (!response.ok) {

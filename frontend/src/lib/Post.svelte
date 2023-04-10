@@ -2,8 +2,15 @@
   export let id: Number;
   export let title: String;
   export let content: String;
-  export let date: Date;
+  export let date;
   export let deletePost; String;
+
+  function getMonthName(monthNumber) {
+    const date = new Date();
+    date.setMonth(monthNumber - 1);
+
+    return date.toLocaleString(undefined, { month: 'long' });
+  }
   
   async function handleDelete() {
     const confirmDelete = confirm('Are you sure you want to delete this post?');
@@ -33,7 +40,7 @@
   <div class="post-content">
     <p>{content}</p>
   </div>
-  <h4>{date}</h4>
+  <h4>{date.day} {getMonthName(date.month)} {date.year}</h4>
 </div>
 
 <style>

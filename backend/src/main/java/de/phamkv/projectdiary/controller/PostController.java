@@ -30,6 +30,13 @@ public class PostController {
         return postService.getAllPosts();
     }
 
+    @GetMapping("/day")
+    public List<Post> getPostsByDay(Authentication authentication, @RequestParam("day") Integer day) {
+        String username = authentication.getName();
+        Profile profile = profileService.getProfileByUsername(username);
+        return postService.getPostsByDayAndProfile(day, profile);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Post> getPostById(@PathVariable Long id) {
         Post post = postService.getPostById(id);
