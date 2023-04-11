@@ -29,7 +29,7 @@
     <p>Hello {username}! Today is:</p>
     <Diary />
   {:else}
-    <p>Please log in to use the service</p>
+    <p>Please sign in to use the service</p>
   {/if}
 
   <p>
