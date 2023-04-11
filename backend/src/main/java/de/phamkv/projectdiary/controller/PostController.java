@@ -89,10 +89,11 @@ public class PostController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/profile/{profileId}")
-    public List<Post> getPostsByProfile(@PathVariable Long profileId) {
-        Profile profile = new Profile();
-        profile.setId(profileId);
+    @GetMapping("/profile")
+    public List<Post> getPostsByProfile(Authentication authentication) {
+        String username = authentication.getName();
+        Profile profile = profileService.getProfileByUsername(username);
+
         return postService.getPostsByProfile(profile);
     }
 }
