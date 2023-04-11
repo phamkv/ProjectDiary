@@ -4,6 +4,7 @@
   import Home from './routes/Home.svelte';
   import Signup from './routes/Signup.svelte';
   import Signout from './routes/Signout.svelte';
+  import ProfileSettings from './routes/ProfileSettings.svelte';
   import { loggedIn } from './stores';
 
   let authenticated;
@@ -18,6 +19,7 @@
     <nav>
       <Link to="/">Home</Link>
       {#if authenticated}
+        <Link to="/profile">Profile</Link>
         <Link to="/signout">Sign Out</Link>
       {:else}
         <Link to="/signin">Sign In</Link>
@@ -28,6 +30,7 @@
       <Route path="/signin"><Signin /></Route>
       <Route path="/signup"><Signup /></Route>
       <Route path="/signout"><Signout /></Route>
+      <Route path="/profile"><ProfileSettings /></Route>
     </div>
   </Router>
 
