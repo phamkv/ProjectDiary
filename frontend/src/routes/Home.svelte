@@ -1,7 +1,5 @@
 <script lang="ts">
   import diaryLogo from '../assets/diary.svg'
-  import Counter from '../lib/Counter.svelte'
-  import PingButton from '../lib/PingButton.svelte';
   import { onMount } from 'svelte';
   import { loggedIn } from '../stores';
   import Diary from '../lib/Diary.svelte';
@@ -21,6 +19,8 @@
 </script>
 
 <main>
+  <h2>ProjectDiary</h2>
+
   <div>
       <img src={diaryLogo} class="logo" alt="Diary Logo" />
   </div>
@@ -32,13 +32,8 @@
     <p>Please log in to use the service</p>
   {/if}
 
-  <div class="card">
-    <Counter />
-    <PingButton />
-  </div>
-
   <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
+    This is a demo project. Please do not store sensible information. Check out the <a href="https://github.com/phamkv/projectdiary" target="_blank" rel="noreferrer">GitHub</a> repository.
   </p>
 </main>
 
