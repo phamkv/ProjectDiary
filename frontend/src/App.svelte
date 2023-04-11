@@ -17,12 +17,12 @@
 <main>
   <Router>
     <nav>
-      <Link to="/">Home</Link>
+      <Link to="/" class="links">Home</Link>
       {#if authenticated}
-        <Link to="/profile">Profile</Link>
-        <Link to="/signout">Sign Out</Link>
+        <Link to="/profile" class="links">Profile</Link>
+        <Link to="/signout" class="links">Sign Out</Link>
       {:else}
-        <Link to="/signin">Sign In</Link>
+        <Link to="/signin" class="links">Sign In</Link>
       {/if}
     </nav>
     <div>
@@ -40,7 +40,12 @@
 </main>
 
 <style>
+  nav :global(a) {
+    margin-right: 1rem;
+  }
+
   .read-the-docs {
     color: #888;
   }
+  
 </style>
