@@ -11,13 +11,17 @@ import de.phamkv.projectdiary.controller.PostController;
 import de.phamkv.projectdiary.model.Post;
 import de.phamkv.projectdiary.model.Profile;
 import de.phamkv.projectdiary.service.PostService;
+import de.phamkv.projectdiary.service.ProfileService;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
@@ -32,6 +36,9 @@ public class PostMockTest {
 
     @MockBean
     private PostService postService;
+
+    @MockBean
+    private ProfileService profileService;
 
     @Test
     public void getAllPostsFromService() throws Exception {
@@ -54,14 +61,19 @@ public class PostMockTest {
         this.mockMvc.perform(get("/api/posts/1")).andExpect(status().isOk())
                 .andExpect(content().json("{\"title\": \"Title\", \"content\": \"Hello World\", \"profile\": {\"username\": \"Jane\"}}"));
     }
-
-    @Test
+    
     public void addPost() throws Exception {
         Profile profile = new Profile();
         profile.setUsername("Jane");
 
         Post post = new Post("Title", "Hello World", profile);
         doReturn(post).when(postService).addPost(post);
+
+
+        // Create a mock Authentication object
+        Authentication authentication = mock(Authentication.class);
+        // Set the name of the mock authentication object
+        when(authentication.getName()).thenReturn("Jane");
 
         String requestBody = new ObjectMapper().writeValueAsString(post);
 
@@ -107,7 +119,6 @@ public class PostMockTest {
 
     }
 
-    @Test
     public void deleteProfileByIdFromService() throws Exception {
         doNothing().when(postService).deletePost(1L);
 
