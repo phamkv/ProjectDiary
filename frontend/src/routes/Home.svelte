@@ -38,11 +38,17 @@
 </main>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-    filter: invert(99%) sepia(4%) saturate(264%) hue-rotate(200deg) brightness(112%) contrast(95%);
+  @media (prefers-color-scheme: dark) {
+    .logo {
+      height: 6em;
+      padding: 1.5em;
+      filter: invert(99%) sepia(4%) saturate(264%) hue-rotate(200deg) brightness(112%) contrast(95%);
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    .logo {
+      height: 6em;
+      padding: 1.5em;
+    }
   }
 </style>
