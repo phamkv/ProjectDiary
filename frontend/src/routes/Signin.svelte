@@ -65,3 +65,9 @@
 </form>
 
 <p>New Here? <NavigateButton label="Sign Up" goto="/signup"/></p>
+
+<style>
+  div {
+    margin-bottom: 0.5rem;
+  }
+</style>

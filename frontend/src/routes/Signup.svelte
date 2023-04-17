@@ -46,3 +46,9 @@
   </div>
   <button type="submit">Sign Up</button>
 </form>
+
+<style>
+  div {
+    margin-bottom: 0.5rem;
+  }
+</style>
