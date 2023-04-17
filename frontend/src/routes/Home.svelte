@@ -21,23 +21,24 @@
 <main>
   <h2>ProjectDiary</h2>
 
-  <div>
-      <img src={diaryLogo} class="logo" alt="Diary Logo" />
-  </div>
+  <img src={diaryLogo} class="logo" alt="Diary Logo" />
 
   {#if username}
     <p>Hello {username}! Today is:</p>
     <Diary />
   {:else}
-    <p>Please sign in to use the service</p>
+    <h3>Please sign in to use the service</h3>
   {/if}
 
-  <p>
+  <p class="demo">
     This is a demo project. Please do not store sensible information. Check out the <a href="https://github.com/phamkv/projectdiary" target="_blank" rel="noreferrer">GitHub</a> repository.
   </p>
 </main>
 
 <style>
+  .demo {
+    margin-top: 3rem;
+  }
   @media (prefers-color-scheme: dark) {
     .logo {
       height: 6em;
