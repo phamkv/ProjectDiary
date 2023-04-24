@@ -1,16 +1,10 @@
 ## ProjectDiary - Personal Project
 
-#### Example:
+A diary application to create private posts for each day. On each day, the posts from previous years are shown as well. Built with Spring Boot (Java), Svelte (HTML, CSS, JavaScript) and PostgreSQL.
 
-ProjectDiary
+Check out the live demo deployment: [projectdiary.phamkv.de](https://projectdiary.phamkv.de/)
 
-An diary application to create private posts for each day. On each day, the posts from previous years are shown. Built with Spring Boot, Svelte (JavaScript) and PostgreSQL.
-
-#### Example:
-
-(This project is currently in development. Users can filter tweets by username and keyword and see visual data representation. Functionality to sort by additional parameters is in progress.)
-
-## Project Screen Shot(s)
+## Project Screenshots
 
 #### Example:   
 
@@ -20,28 +14,31 @@ An diary application to create private posts for each day. On each day, the post
 
 ## Installation and Setup Instructions
 
-#### Example:  
-
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
+Clone down this repository. You will need Maven installed globally on your machine.  
 
 Installation:
 
-`npm install`
+`mvn clean verify`
 
 To Run Test Suite:  
 
-`npm test`  
+`mvn test`  
 
 To Start Server:
 
-`npm start`  
+Make sure to setup a running PostgreSQL instance. Change credentials in backend/src/main/resources/application-local.properties (Recommended: Use the postgres Docker image)
+
+`java -jar backend/target/backend-0.0.1-SNAPSHOT.jar --spring.profiles.active=local`  
 
 To Visit App:
 
 `localhost:8080` 
 
 ## Project Status
-(only necessary if incomplete)
+#### Example:
+
+(This project is currently in development. Users can filter tweets by username and keyword and see visual data representation. Functionality to sort by additional parameters is in progress.)
+
 
 ## Reflection
 
