@@ -1,6 +1,8 @@
 <script>
   import { navigate } from 'svelte-routing';
   import { postsStore } from '../stores';
+
+  export let selectedDate;
   
   let title = '';
   let content = '';
@@ -10,10 +12,9 @@
   function handleSubmit(event) {
     event.preventDefault();
 
-    const date = new Date();
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
+    const day = selectedDate.getDate();
+    const month = selectedDate.getMonth() + 1;
+    const year = selectedDate.getFullYear();
     
     const token = localStorage.getItem('token');
     if (!token) {

@@ -24,7 +24,7 @@
   <img src={diaryLogo} class="logo" alt="Diary Logo" />
 
   {#if username}
-    <p>Hello {username}! Today is:</p>
+    <p>Hello {username}! Here is your diary:</p>
     <Diary />
   {:else}
     <h3>Please sign in to use the service</h3>
