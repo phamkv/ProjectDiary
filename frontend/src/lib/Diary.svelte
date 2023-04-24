@@ -44,7 +44,13 @@
   });
 
   function handleDateChange(event) {
-    selectedDate = new Date(event.target.value);
+    event.preventDefault();
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(event.target[0].value)) {
+      return
+    }
+
+    selectedDate = new Date(event.target[0].value);
     day = selectedDate.getDate();
     year = selectedDate.getFullYear();
     weekday = selectedDate.toLocaleString(navigator.language, { weekday: 'long' });
@@ -60,10 +66,15 @@
   <div class="dateText">{monthString} {year}</div>
 </div>
 
-<div>
+<form on:submit={handleDateChange}>
   <label for="date-picker">Select a date:</label>
-  <input type="date" id="date-picker" on:change={handleDateChange} value={selectedDate.toISOString().substr(0, 10)} />
-</div>
+  <input type="date"
+    id="date-picker"
+    name="date-picker" 
+    value={selectedDate.toISOString().substr(0, 10)}
+  />
+  <button type="submit">Go</button>
+</form>
 
 <NewPostForm selectedDate={selectedDate}/>
 
@@ -83,6 +94,17 @@ None (Feel free to add something to your Diary)
 {/if}
 
 <style>
+  #date-picker {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    transition: border-color 0.25s;
+  }
+
   .date {
     display: flex;
     flex-direction: column;
