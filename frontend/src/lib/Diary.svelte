@@ -4,11 +4,11 @@
   import Post from "./Post.svelte";
   import { postsStore } from '../stores';
 
-  let date = new Date();
-  let day = date.getDate();
-  let year = date.getFullYear();
-  let weekday = date.toLocaleString(navigator.language, { weekday: 'long' });
-  let monthString = date.toLocaleString(navigator.language, { month: 'long' });
+  let selectedDate = new Date();
+  let day = selectedDate.getDate();
+  let year = selectedDate.getFullYear();
+  let weekday = selectedDate.toLocaleString(navigator.language, { weekday: 'long' });
+  let monthString = selectedDate.toLocaleString(navigator.language, { month: 'long' });
 
   let posts = [];
 
@@ -16,14 +16,13 @@
     posts = value;
   });
 
-  onMount(async () => {
+  async function fetchPostsForSelectedDate() {
     const token = localStorage.getItem('token');
-    const date = new Date();
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
+    const selectedDay = selectedDate.getDate();
+    const selectedMonth = selectedDate.getMonth() + 1;
 
     try {
-      const response = await fetch(`/api/posts/day?day=${day}`, {
+      const response = await fetch(`/api/posts/day?day=${selectedDay}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -31,14 +30,28 @@
 
       if (response.ok) {
         const results = await response.json();
-        postsStore.update(value => results.filter(post => post.month == month));
+        postsStore.update(value => results.filter(post => post.month == selectedMonth));
       } else {
         console.error('Error fetching posts.');
       }
     } catch (error) {
       console.error('Error fetching posts:', error);
     }
+  }
+
+  onMount(() => {
+    fetchPostsForSelectedDate();
   });
+
+  function handleDateChange(event) {
+    selectedDate = new Date(event.target.value);
+    day = selectedDate.getDate();
+    year = selectedDate.getFullYear();
+    weekday = selectedDate.toLocaleString(navigator.language, { weekday: 'long' });
+    monthString = selectedDate.toLocaleString(navigator.language, { month: 'long' });
+
+    fetchPostsForSelectedDate();
+  }
 </script>
 
 <div class="date">
@@ -47,7 +60,12 @@
   <div class="dateText">{monthString} {year}</div>
 </div>
 
-<NewPostForm />
+<div>
+  <label for="date-picker">Select a date:</label>
+  <input type="date" id="date-picker" on:change={handleDateChange} value={selectedDate.toISOString().substr(0, 10)} />
+</div>
+
+<NewPostForm selectedDate={selectedDate}/>
 
 <p>You posted this on {day} {monthString}:</p>
 
