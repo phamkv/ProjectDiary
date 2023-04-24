@@ -1,6 +1,6 @@
 ## ProjectDiary - Personal Project
 
-A diary application to create private posts for each day. On each day, the posts from previous years are shown as well. Built with Spring Boot (Java), Svelte (HTML, CSS, JavaScript) and PostgreSQL.
+A diary application to create posts for each day. On each day, the posts from previous years are shown as well. Built with Spring Boot (Java), Svelte (HTML, CSS, JavaScript) and PostgreSQL. Deployed on fly.io.
 
 Check out the live demo deployment: [projectdiary.phamkv.de](https://projectdiary.phamkv.de/)
 
@@ -35,10 +35,8 @@ To Visit App:
 `localhost:8080` 
 
 ## Project Status
-#### Example:
 
-(This project is currently in development. Users can filter tweets by username and keyword and see visual data representation. Functionality to sort by additional parameters is in progress.)
-
+This project is currently in development. It has all the main functionalities. Users can sign up for an account and create posts for specific days. The date can be selected using a calendar picker. Functionality to edit existing posts as well as more test suites are in progress.
 
 ## Reflection
 
