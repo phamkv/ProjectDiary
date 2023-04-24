@@ -126,4 +126,10 @@ None (Feel free to add something to your Diary)
     margin-top: 0.5rem;
     font-size: 1.25rem;
   }
+
+  @media (prefers-color-scheme: light) {
+    #date-picker {
+      background-color: #f2f2f2;
+    }
+  }
 </style>
