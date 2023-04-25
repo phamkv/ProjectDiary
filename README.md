@@ -1,63 +1,40 @@
 ## ProjectDiary - Personal Project
 
-#### Example:
+A diary application to create posts for each day. On each day, the posts from previous years are shown as well. Built with Spring Boot (Java), Svelte (HTML, CSS, JavaScript) and PostgreSQL. Deployed on fly.io.
 
-ProjectDiary
+Check out the live demo deployment at [projectdiary.phamkv.de](https://projectdiary.phamkv.de/)
 
-An diary application to create private posts for each day. On each day, the posts from previous years are shown. Built with Spring Boot, Svelte (JavaScript) and PostgreSQL.
-
-#### Example:
-
-(This project is currently in development. Users can filter tweets by username and keyword and see visual data representation. Functionality to sort by additional parameters is in progress.)
-
-## Project Screen Shot(s)
+## Project Screenshots
 
 #### Example:   
 
-[ PRETEND SCREEN SHOT IS HERE ]
-
-[ PRETEND OTHER SCREEN SHOT IS HERE ]
+<img src="https://user-images.githubusercontent.com/40146623/234266484-b6bf0c16-42c2-40e2-9c7a-19c9082abf27.png" width="400">
+<img src="https://user-images.githubusercontent.com/40146623/234266489-929d1872-9594-46fc-a994-94389b403633.png" width="400">
+<img src="https://user-images.githubusercontent.com/40146623/234266510-be58dd92-c931-4258-bd10-fdda106018d8.png" width="400">
+<img src="https://user-images.githubusercontent.com/40146623/234266514-f533a7a8-921c-49aa-ba4d-ecd081017d2e.png" width="400">
 
 ## Installation and Setup Instructions
 
-#### Example:  
-
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
+Clone down this repository. You will need Maven installed globally on your machine.  
 
 Installation:
 
-`npm install`
+`mvn clean verify`
 
 To Run Test Suite:  
 
-`npm test`  
+`mvn test`  
 
 To Start Server:
 
-`npm start`  
+Make sure to setup a running PostgreSQL instance. Change credentials in backend/src/main/resources/application-local.properties (Recommended: Use the postgres Docker image)
+
+`java -jar backend/target/backend-0.0.1-SNAPSHOT.jar --spring.profiles.active=local`  
 
 To Visit App:
 
 `localhost:8080` 
 
 ## Project Status
-(only necessary if incomplete)
 
-## Reflection
-
-  - What was the context for this project? (ie: was this a side project? was this for Turing? was this for an experiment?)
-  - What did you set out to build?
-  - Why was this project challenging and therefore a really good learning experience?
-  - What were some unexpected obstacles?
-  - What tools did you use to implement this project?
-      - This might seem obvious because you are IN this codebase, but to all other humans now is the time to talk about why you chose webpack instead of create react app, or D3, or vanilla JS instead of a framework etc. Brag about your choices and justify them here.  
-
-#### Example:  
-
-This was a 3 week long project built during my third module at Turing School of Software and Design. Project goals included using technologies learned up until this point and familiarizing myself with documentation for new features.  
-
-Originally I wanted to build an application that allowed users to pull data from the Twitter API based on what they were interested in, such as 'most tagged users'. I started this process by using the `create-react-app` boilerplate, then adding `react-router-4.0` and `redux`.  
-
-One of the main challenges I ran into was Authentication. This lead me to spend a few days on a research spike into OAuth, Auth0, and two-factor authentication using Firebase or other third parties. Due to project time constraints, I had to table authentication and focus more on data visualization from parts of the API that weren't restricted to authenticated users.
-
-At the end of the day, the technologies implemented in this project are React, React-Router 4.0, Redux, LoDash, D3, and a significant amount of VanillaJS, JSX, and CSS. I chose to use the `create-react-app` boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes. In the next iteration I plan on handrolling a `webpack.config.js` file to more fully understand the build process.
+This project is currently in development. It has all the main functionalities. Users can sign up for an account and create posts for specific days. The date can be selected using a calendar picker. Functionality to edit existing posts as well as more test suites are in progress.
