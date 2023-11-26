@@ -3,6 +3,7 @@ package de.phamkv.projectdiary.controller;
 import de.phamkv.projectdiary.model.Profile;
 import de.phamkv.projectdiary.security.jwt.JwtUtils;
 import de.phamkv.projectdiary.repository.ProfileRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +20,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/auth")
+@Tag(name = "Authentication", description = "Authentication management API (register, login, delete)")
 public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final PasswordEncoder encoder;

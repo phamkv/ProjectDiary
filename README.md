@@ -31,6 +31,10 @@ Make sure to setup a running PostgreSQL instance. Change credentials in backend/
 
 `java -jar backend/target/backend-0.0.1-SNAPSHOT.jar --spring.profiles.active=local`  
 
+Alternatively, you can run this project with a memory database:
+
+`java -jar backend/target/backend-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev`
+
 To Visit App:
 
 `localhost:8080` 
