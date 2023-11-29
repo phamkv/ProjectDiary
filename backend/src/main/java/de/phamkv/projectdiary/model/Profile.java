@@ -33,13 +33,13 @@ public class Profile {
     @Column(name = "password")
     private String password;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Column(name = "roles")
-    private Set<String> roles = new HashSet<>(Collections.singletonList("ROLE_USER"));
-
     @OneToMany(mappedBy = "profile", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("profile")
     private List<Post> posts;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Column(name = "roles")
+    private Set<String> roles = new HashSet<>(Collections.singletonList("ROLE_USER"));
 
     public Profile(String username, String password) {
         this.username = username;
